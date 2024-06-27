@@ -22,6 +22,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+
       <body className={`${poppins.className} ${poppins.variable}`}>
         <Layout>{children}</Layout>
       </body>

@@ -22,7 +22,6 @@ const SidebarContainer: React.FC<SidebarContainerProps> = (props) => {
         parseInt(curr?.product_price) * (curr?.quantity ? curr?.quantity : 1),
       0
     );
-  console.log("loader==>", loader);
   return (
     <div className="fixed inset-0 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">

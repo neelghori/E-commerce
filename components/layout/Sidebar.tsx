@@ -9,7 +9,6 @@ import { toast } from "sonner";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
-
   const { state } = useContext(CartContextProvider);
   return (
     <React.Fragment>
