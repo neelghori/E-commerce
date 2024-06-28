@@ -1,16 +1,16 @@
 import { ProductDataProps } from "@Ecommerce/Types/Container/ProductList";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
-export const getProductlist = async (): Promise<
-  ProductDataProps[] | null | any
-> => {
+export const getProductlist = async (ssr?: {
+  isServerSide?: boolean;
+}): Promise<ProductDataProps[] | null | any> => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Product`, {
       method: "GET",
       next: {
-        revalidate: 1000,
         tags: ["product"],
       },
+      cache: "no-store",
     });
     const jsonResponse = await response.json();
     if (jsonResponse) {
@@ -38,7 +38,7 @@ export const updateProduct = async (body: ProductDataProps) => {
     );
     const jsonResponse = await response.json();
     if (jsonResponse) {
-      revalidateTag("product");
+      revalidatePath("/");
       return jsonResponse;
     } else {
       return null;

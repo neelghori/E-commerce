@@ -11,7 +11,7 @@ import Image from "next/image";
 import React, { useContext } from "react";
 
 const SidebarContainer: React.FC<SidebarContainerProps> = (props) => {
-  const { cartData, checkoutFunc, loader } = useCart(props);
+  const { cartData, loader, checkoutFunc } = useCart(props);
   const { state, dispatch } = useContext(CartContextProvider);
   const totalCheckoutAmount =
     state.cart &&
@@ -24,7 +24,7 @@ const SidebarContainer: React.FC<SidebarContainerProps> = (props) => {
     );
   return (
     <div className="fixed inset-0 overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden bg-black/65">
         <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
           <DialogPanel
             transition
@@ -123,6 +123,7 @@ const SidebarContainer: React.FC<SidebarContainerProps> = (props) => {
                       <p> Checkout</p>
                     )}
                   </Button>
+                  {/* <CheckOut state={state} /> */}
                 </div>
               </div>
             </div>

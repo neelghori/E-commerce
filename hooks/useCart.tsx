@@ -1,7 +1,6 @@
 import { CartContextProvider } from "@Ecommerce/Context/CartContext";
 import { ProductDataProps } from "@Ecommerce/Types/Container/ProductList";
 import { CartReducerAction } from "@Ecommerce/Types/Context";
-import { getCartList } from "@Ecommerce/lib/Cartlist";
 import { getProductlist, updateProduct } from "@Ecommerce/lib/ProductList";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -12,21 +11,9 @@ const useCart = (props: { setOpen: (val: boolean) => void }) => {
   const [loader, setLoader] = useState(false);
   const getApiData = async () => {
     const productData = await getProductlist();
-    const getCartData = await getCartList();
-    const filterProductList =
-      productData &&
-      productData.length > 0 &&
-      getCartData &&
-      getCartData.length > 0 &&
-      getCartData.filter((product: any, index: number) => {
-        const findProduct = productData.find(
-          (element: any) => element.id == product.id
-        );
-        if (findProduct) {
-          return { ...findProduct, quantity: product.quantity };
-        }
-      });
-    setCartData(filterProductList);
+    if (productData) {
+      setCartData(productData);
+    }
   };
 
   useEffect(() => {
@@ -44,8 +31,13 @@ const useCart = (props: { setOpen: (val: boolean) => void }) => {
       const response = await updateProduct(chnageinInventory);
       if (response) {
         dispatch({ type: CartReducerAction.CLEARCART });
+        dispatch({ type: CartReducerAction.UPDATEINVENTORY, payload: true });
+
         props?.setOpen(false);
         toast.success("Order Placed SuccessFully");
+        setTimeout(() => {
+          dispatch({ type: CartReducerAction.UPDATEINVENTORY, payload: false });
+        }, 2000);
       } else {
         toast.error("Something Went Wrong");
       }

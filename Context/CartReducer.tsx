@@ -1,4 +1,5 @@
 /* eslint-disable no-case-declarations */
+import { ProductDataProps } from "@Ecommerce/Types/Container/ProductList";
 import {
   CartReducerAction,
   CartReducerFunAction,
@@ -18,7 +19,7 @@ const ReducerFunction = (
     case CartReducerAction.ADDTOCART:
       const duplicateCart = [...state.cart];
       if (payload) {
-        duplicateCart.push(payload);
+        duplicateCart.push(payload as ProductDataProps);
       }
       toast.success("Product Add to Cart");
       return {
@@ -29,7 +30,9 @@ const ReducerFunction = (
       const stateCart = [...state.cart];
       const filterCart =
         stateCart && stateCart.length > 0
-          ? stateCart.filter((ele) => ele.id !== payload?.id)
+          ? stateCart.filter(
+              (ele) => ele.id !== (payload as ProductDataProps)?.id
+            )
           : [];
       toast.success("Product Remove from Cart");
 
@@ -42,8 +45,8 @@ const ReducerFunction = (
       const updateData =
         UpdateQuantity && UpdateQuantity.length > 0
           ? UpdateQuantity.map((ele) => {
-              if (ele.id == payload?.id) {
-                if (payload?.quantity_type == "ADD") {
+              if (ele.id == (payload as ProductDataProps)?.id) {
+                if ((payload as ProductDataProps)?.quantity_type == "ADD") {
                   return {
                     ...ele,
                     quantity: ele?.quantity ? ele.quantity + 1 : 1,
@@ -69,6 +72,11 @@ const ReducerFunction = (
         cart: [],
       };
 
+    case CartReducerAction.UPDATEINVENTORY:
+      return {
+        ...state,
+        updateProduct: payload as boolean,
+      };
     default:
       return state;
   }

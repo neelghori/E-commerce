@@ -3,6 +3,7 @@ import { ProductDataProps } from "../Container/ProductList";
 
 export interface InitialValueProps {
   cart: ProductDataProps[];
+  updateProduct: boolean;
 }
 
 export interface CartReducerFunAction {
@@ -15,11 +16,12 @@ export enum CartReducerAction {
   DELETEPRODUCTFROMCART = "DELETE_PRODUCT_FROM_CART",
   UPDATEQUANTITY = "UPDATE_QUANTITY",
   CLEARCART = "CLEAR_CART",
+  UPDATEINVENTORY = "UPDATE_INVENTORY",
 }
 
-export type PayloadProps = ProductDataProps;
+export type PayloadProps = ProductDataProps | boolean;
 
 export interface CartCreateContextProps {
-  state: { cart: ProductDataProps[] };
+  state: { cart: ProductDataProps[]; updateProduct?: boolean };
   dispatch: Dispatch<CartReducerFunAction>;
 }
