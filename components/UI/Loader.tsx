@@ -1,6 +1,7 @@
 import { LoaderProps } from "@Ecommerce/Types/components/UI";
 import React from "react";
 
+//common loader component
 const Loader: React.FC<LoaderProps> = (props) => {
   return (
     <svg

@@ -2,7 +2,7 @@ import React from "react";
 import { InputProps } from "@Ecommerce/Types/components/UI/index";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
-//common input element component
+//common input component
 const Input: React.FC<InputProps> = (props) => {
   return (
     <div>

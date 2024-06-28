@@ -3,6 +3,7 @@ import useDebounce from "./useDebounce";
 import { getProductlist } from "@Ecommerce/lib/ProductList";
 import { ProductDataProps } from "@Ecommerce/Types/Container/ProductList";
 
+/// common use of search for product and suggestion product
 const useSearch = (text: string) => {
   const [suggestion, setSuggestion] = useState<ProductDataProps[]>([]);
   const [searchResult, setSearchResult] = useState<ProductDataProps[]>([]);

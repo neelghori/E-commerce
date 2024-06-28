@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import Search from "@Ecommerce/container/Search/Search";
 import Link from "next/link";
 
+//header common for layout in all the page
 const Header: React.FC<any> = (props) => {
   return (
     <div className="mx-auto max-w-[100rem] px-3 lg:px-8 flex justify-between items-center">
@@ -15,7 +16,9 @@ const Header: React.FC<any> = (props) => {
         </p>
       </Link>
       <div className="flex gap-2 items-center  transition-all duration-300">
+        {/* search component */}
         <Search />
+        {/* sidebar checkout component */}
         <Sidebar />
       </div>
     </div>

@@ -9,10 +9,11 @@ import { DialogPanel, DialogTitle } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import React, { useContext } from "react";
-
+// sidebar checkout component to checkout or place order
 const SidebarContainer: React.FC<SidebarContainerProps> = (props) => {
   const { cartData, loader, checkoutFunc } = useCart(props);
   const { state, dispatch } = useContext(CartContextProvider);
+  //total checkout amount of cart
   const totalCheckoutAmount =
     state.cart &&
     state.cart.length > 0 &&
@@ -123,7 +124,6 @@ const SidebarContainer: React.FC<SidebarContainerProps> = (props) => {
                       <p> Checkout</p>
                     )}
                   </Button>
-                  {/* <CheckOut state={state} /> */}
                 </div>
               </div>
             </div>

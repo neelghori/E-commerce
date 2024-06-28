@@ -1,6 +1,7 @@
 import { ProductDataProps } from "@Ecommerce/Types/Container/ProductList";
 import { revalidatePath, revalidateTag } from "next/cache";
 
+//common api for get the product list
 export const getProductlist = async (ssr?: {
   isServerSide?: boolean;
 }): Promise<ProductDataProps[] | null | any> => {
@@ -23,6 +24,7 @@ export const getProductlist = async (ssr?: {
   }
 };
 
+//common api for  update product data
 export const updateProduct = async (body: ProductDataProps) => {
   const jsonConvert = JSON.stringify(body);
   try {

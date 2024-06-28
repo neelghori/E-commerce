@@ -3,7 +3,9 @@ import { ProductDataProps } from "@Ecommerce/Types/Container/ProductList";
 import ProductCard from "./ProductCard";
 import useProduct from "@Ecommerce/hooks/useProduct";
 
+//product list container component
 const ProductList: React.FC<{ productdata: ProductDataProps[] }> = (props) => {
+  // give the product data to hook for manipulation of product data
   const { productArray } = useProduct(props?.productdata);
   return (
     <div className="mx-auto">

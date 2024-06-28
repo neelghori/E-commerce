@@ -7,9 +7,7 @@ import {
 } from "@Ecommerce/Types/Context";
 import { toast } from "sonner";
 
-//initialvalue for context api
-
-//reducer function for handling all login,register,adding book,editbook,delete book,setting initialvalue
+//reducer function for cart management adding ,updating ,deleting
 const ReducerFunction = (
   state: InitialValueProps,
   action: CartReducerFunAction

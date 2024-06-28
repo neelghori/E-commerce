@@ -5,6 +5,7 @@ import { getProductlist, updateProduct } from "@Ecommerce/lib/ProductList";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 
+//custom hook for cart management
 const useCart = (props: { setOpen: (val: boolean) => void }) => {
   const [cartData, setCartData] = useState<ProductDataProps[]>([]);
   const { state, dispatch } = useContext(CartContextProvider);

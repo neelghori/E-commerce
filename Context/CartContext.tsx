@@ -7,7 +7,7 @@ import {
 } from "@Ecommerce/Types/Context";
 import ReducerFunction from "./CartReducer";
 import { initialValue } from "@Ecommerce/data/constants";
-
+//create cart context for global state management
 export const CartContextProvider = React.createContext<CartCreateContextProps>({
   state: initialValue,
   dispatch: () => {},

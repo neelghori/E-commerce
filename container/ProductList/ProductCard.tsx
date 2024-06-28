@@ -5,9 +5,12 @@ import { ProductDataProps } from "@Ecommerce/Types/Container/ProductList";
 import Image from "next/image";
 import { useContext } from "react";
 import AddToCart from "@Ecommerce/components/UI/AddToCart";
+// single product card show in list of products
 const ProductCard: React.FC<ProductDataProps> = (props) => {
+  //context hook to fetch the context data
   const { state, dispatch } = useContext(CartContextProvider);
   const product = props;
+  //check product is available in cart or not
   const isInCart =
     state.cart &&
     state.cart.length > 0 &&
@@ -15,6 +18,7 @@ const ProductCard: React.FC<ProductDataProps> = (props) => {
   return (
     <div key={product.id} className="group flex flex-col gap-4">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+        {/* image optimization */}
         <Image
           src={product.product_image}
           alt={product.product_image}
@@ -34,6 +38,7 @@ const ProductCard: React.FC<ProductDataProps> = (props) => {
           )
         </span>
       </p>
+      {/* add to cart button for common use */}
       <AddToCart product={product} isInCart={isInCart as ProductDataProps} />
     </div>
   );

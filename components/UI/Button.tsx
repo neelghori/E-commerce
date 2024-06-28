@@ -1,6 +1,7 @@
 import { ButtonProps } from "@Ecommerce/Types/components/UI";
 import React from "react";
 
+//common button component
 const Button: React.FC<ButtonProps> = (props) => {
   return (
     <button

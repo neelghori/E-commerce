@@ -3,7 +3,7 @@ import { ProductDataProps } from "@Ecommerce/Types/Container/ProductList";
 import { CartCreateContextProps } from "@Ecommerce/Types/Context";
 import { getProductlist } from "@Ecommerce/lib/ProductList";
 import React, { useContext, useEffect, useState } from "react";
-
+//common custom hook for product list manipulation
 const useProduct = (product: ProductDataProps[]) => {
   const [productArray, setProductArray] = useState<ProductDataProps[]>([]);
 
