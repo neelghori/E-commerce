@@ -14,7 +14,7 @@ export const CartContextProvider = React.createContext<CartCreateContextProps>({
 });
 
 // cart context to share the data across whole project
-const BookContext: React.FC<{ children: React.ReactNode }> = (props) => {
+const CartContext: React.FC<{ children: React.ReactNode }> = (props) => {
   const [state, dispatch] = useReducer(
     (state: InitialValueProps, action: CartReducerFunAction) => {
       return ReducerFunction(state, action);
@@ -28,4 +28,4 @@ const BookContext: React.FC<{ children: React.ReactNode }> = (props) => {
   );
 };
 
-export default BookContext;
+export default CartContext;
